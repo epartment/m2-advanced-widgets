@@ -1,6 +1,6 @@
 {
-    "name": "epartment/module-widgets",
-    "description": "Epartment Widgets Module",
+    "name": "epartment/m2-advanced-widgets",
+    "description": "Magento 2 Widget module supporting all UI Components",
     "type": "magento2-module",
     "license": "proprietary",
     "authors": [
