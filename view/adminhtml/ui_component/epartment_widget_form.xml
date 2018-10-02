@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">epartment_widget_form.epartment_widget_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Manage widget</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <namespace>epartment_widget_form</namespace>
+        <dataScope>data</dataScope>
+        <buttons>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="delete" class="Epartment\Widgets\Block\Adminhtml\Widgets\Edit\DeleteButton"/>
+            <button name="reset" class="Epartment\Widgets\Block\Adminhtml\Widgets\Edit\ResetButton"/>
+            <button name="save" class="Epartment\Widgets\Block\Adminhtml\Widgets\Edit\SaveButton"/>
+        </buttons>
+        <deps>
+            <dep>epartment_widget_form.epartment_widget_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="epartment_widget_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="epa_widgets/manage/save"/>
+        </settings>
+        <dataProvider class="Epartment\Widgets\Model\Widget\DataProvider" name="epartment_widget_form_data_source">
+            <settings>
+                <primaryFieldName>id</primaryFieldName>
+                <requestFieldName>id</requestFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label translate="true">General</label>
+        </settings>
+
+        <field name="id" formElement="input">
+            <settings>
+                <visible>false</visible>
+                <dataType>text</dataType>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+
+        <field name="type" component="Epartment_Widgets/js/form/element/widget-type" formElement="select">
+            <settings>
+                <label translate="true">Type</label>
+                <visible>true</visible>
+                <required>true</required>
+                <dataScope>type</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Epartment\Widgets\Model\Source\Widget\Type" />
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <field name="name" formElement="input">
+            <settings>
+                <label translate="true">Name</label>
+                <visible>true</visible>
+                <required>true</required>
+                <dataScope>name</dataScope>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+
+    </fieldset>
+</form>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Epartment_Widgets" title="Epartment" module="Epartment_Widgets" resource="Epartment_Widgets::design_config_epartment" parent="Magento_Backend::content" sortOrder="50" />
+        <add id="Epartment_Widgets::index" title="Widgets" module="Epartment_Widgets" action="epa_widgets/manage/index" resource="Epartment_Widgets::design_config_epartment_widgets" parent="Epartment_Widgets"  sortOrder="10" />
+    </menu>
+</config>

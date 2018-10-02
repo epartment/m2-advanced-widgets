@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="epartment_widget_placeholder" class="Epartment\Widgets\Block\Widget">
+        <label>Epartment Widget</label>
+        <description>Adds an Epartment Widget</description>
+        <parameters>
+            <parameter xsi:type="select" name="widget_id" visible="true" required="true" sort_order="10" source_model="Epartment\Widgets\Model\Source\Widget">
+                <label>Widget</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
