@@ -31,7 +31,7 @@ class Widget extends \Magento\Framework\View\Element\Template implements \Magent
 
     public function toHtml()
     {
-        if (get_class($this) === self::class) {
+        if (get_class($this) === self::class || get_class($this) === self::class . '\Interceptor') {
             $this->widget = $this->widgetFactory->create()->load($this->getData('widget_id'));
 
             $widgetRegistrationParams = $this->widgetTypeFactory->create()->getRegisteredWidgetByType($this->widget->getData('type'));
