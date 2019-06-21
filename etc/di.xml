@@ -1,32 +1,27 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="WidgetsGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
-        <arguments>
-            <argument name="collection" xsi:type="object" shared="false">Epartment\Widgets\Model\ResourceModel\Widget\Collection</argument>
-            <argument name="filterPool" xsi:type="object" shared="false">WidgetsGridFilterPool</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="WidgetsGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
-        <arguments>
-            <argument name="appliers" xsi:type="array">
-                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
-                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
-            </argument>
-        </arguments>
-    </virtualType>
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="epa_widgets_widget_data_source" xsi:type="string">Epartment\Widgets\Model\ResourceModel\Widget\Collection</item>
+                <item name="epa_widgets_widget_data_source" xsi:type="string">EpartmentWidgetsWidgetGridCollection</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Epartment\Widgets\Model\ResourceModel\Widget\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+
+    <type name="Epartment\Widgets\Model\ResourceModel\Widget\Collection">
         <arguments>
-            <argument name="mainTable" xsi:type="string">epartment_widgets</argument>
+            <argument name="model" xsi:type="string">Epartment\Widgets\Model\Widget</argument>
+            <argument name="resourceModel" xsi:type="string">Epartment\Widgets\Model\ResourceModel\Widget</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="EpartmentWidgetsWidgetGridCollection" type="Epartment\Widgets\Model\ResourceModel\Widget\Collection">
+        <arguments>
+            <argument name="model" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\Document</argument>
             <argument name="resourceModel" xsi:type="string">Epartment\Widgets\Model\ResourceModel\Widget</argument>
         </arguments>
     </virtualType>
+
     <type name="Epartment\Widgets\Model\Widget\FileProcessor">
         <arguments>
             <argument name="baseTmpPath" xsi:type="string">epa_widgets/tmp</argument>

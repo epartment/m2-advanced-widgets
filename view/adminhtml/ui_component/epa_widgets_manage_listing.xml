@@ -3,35 +3,34 @@
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">epa_widgets_manage_listing.epa_widgets_widget_data_source</item>
-            <item name="deps" xsi:type="string">epa_widgets_manage_listing.epa_widgets_widget_data_source</item>
-        </item>
-        <item name="spinner" xsi:type="string">manage_widgets_columns</item>
-        <item name="buttons" xsi:type="array">
-            <item name="add" xsi:type="array">
-                <item name="name" xsi:type="string">add</item>
-                <item name="label" xsi:type="string" translate="true">Add new widget</item>
-                <item name="class" xsi:type="string">primary</item>
-                <item name="url" xsi:type="string">*/*/new</item>
-            </item>
         </item>
     </argument>
-
-    <dataSource name="manage_widgets_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">WidgetsGridDataProvider</argument>
-            <argument name="name" xsi:type="string">epa_widgets_widget_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">id</argument>
-            <argument name="requestFieldname" xsi:type="string">id</argument>
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
-                    <item name="update_url" xsi:type="url" path="mui/index/render" />
-                    <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">id</item>
-                    </item>
-                </item>
-            </argument>
-        </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new widget</label>
+            </button>
+        </buttons>
+        <spinner>manage_widgets_columns</spinner>
+        <deps>
+            <dep>epa_widgets_manage_listing.epa_widgets_widget_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="epa_widgets_widget_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="epa_widgets_widget_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
     </dataSource>
 
     <columns name="manage_widgets_columns">

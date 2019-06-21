@@ -2,7 +2,10 @@
 
 namespace Epartment\Widgets\Model\ResourceModel\Widget;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Epartment\Widgets\Model\Widget;
+use Epartment\Widgets\Model\ResourceModel\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
     /**
      * @var string
@@ -11,6 +14,9 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
 
     protected function _construct()
     {
-        $this->_init('Epartment\Widgets\Model\Widget', 'Epartment\Widgets\Model\ResourceModel\Widget');
+        $this->_init(
+            Widget::class,
+            \Epartment\Widgets\Model\ResourceModel\Widget::class
+        );
     }
 }

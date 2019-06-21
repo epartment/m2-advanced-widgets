@@ -2,7 +2,7 @@
 
 namespace Epartment\Widgets\Model\ResourceModel;
 
-class Widget extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Widget extends AbstractModel
 {
     protected function _construct()
     {
